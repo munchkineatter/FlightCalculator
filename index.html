@@ -5,20 +5,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>2D Disc Golf Flight Path Visualization with Improved Controls</title>
     <style>
-        body { margin: 0; font-family: Arial, sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; }
-        #container { display: flex; }
-        #controls { width: 300px; padding: 10px; background: #f0f0f0; }
+        body { 
+            margin: 0; 
+            font-family: Arial, sans-serif; 
+            display: flex; 
+            justify-content: center; 
+            align-items: flex-start; 
+            min-height: 100vh;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        #container { 
+            display: flex; 
+            flex-direction: column; 
+            max-width: 1200px;
+            width: 100%;
+        }
+        #controls { 
+            width: 100%; 
+            padding: 10px; 
+            background: #f0f0f0; 
+            box-sizing: border-box;
+        }
         label { display: block; margin-top: 10px; }
-        #canvasContainer { position: relative; }
-        canvas { border: 1px solid #000; }
+        #canvasContainer { 
+            position: relative; 
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        canvas { 
+            border: 1px solid #000; 
+            width: 100%;
+            height: auto;
+        }
         #distanceLabels { position: absolute; top: 5px; left: 5px; font-size: 12px; }
         #endDistance { position: absolute; bottom: 5px; left: 5px; font-size: 14px; font-weight: bold; }
         #savedDiscs { margin-top: 20px; border-top: 1px solid #ccc; padding-top: 10px; }
         #discList { max-height: 200px; overflow-y: auto; }
         .savedDisc { margin: 5px 0; cursor: pointer; }
         .savedDisc:hover { text-decoration: underline; }
-        .control-group { display: flex; align-items: center; }
-        .control-group input[type="number"] { width: 50px; margin-left: 10px; }
+        .control-group { display: flex; flex-wrap: wrap; align-items: center; }
+        .control-group input[type="range"] { flex-grow: 1; margin: 0 10px; }
+        .control-group input[type="number"] { width: 60px; }
+        input[type="text"], input[type="number"] { 
+            width: 100%; 
+            max-width: 300px; 
+            box-sizing: border-box;
+            margin-top: 5px;
+        }
+        @media (min-width: 768px) {
+            #container { flex-direction: row; align-items: flex-start; }
+            #controls { width: 300px; }
+            #canvasContainer { flex-grow: 1; margin: 0; }
+        }
     </style>
 </head>
 <body>
